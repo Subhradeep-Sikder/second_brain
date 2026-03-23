@@ -1,6 +1,8 @@
 import axios from "axios";
+import { BACKEND_URL } from "./config";
+
 
 export const api = axios.create({
   // Hardcoded to point to your Node server
-  baseURL: "http://localhost:3000/api/v1", 
+  baseURL: BACKEND_URL,
 });

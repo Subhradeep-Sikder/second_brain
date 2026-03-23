@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Button } from "./ui/Button";
 import { Input } from "./ui/Input";
-import { api } from "../api"; // Assuming api.ts has the hardcoded baseURL now
+import { api } from "../api"; 
 
 interface CreateContentModalProps {
   open: boolean;
@@ -23,13 +23,13 @@ export function CreateContentModal({ open, onClose }: CreateContentModalProps) {
         return;
       }
 
-      // Convert comma-separated string → array of strings
+     
       const formattedTags = tags
         .split(",")
         .map(tag => tag.trim())
         .filter(tag => tag.length > 0);
 
-      // We use the 'api' instance which points to http://localhost:3000/api/v1
+      // We use the 'api' instance which points to the configured backend URL
       await api.post(
         "/content",
         {
@@ -40,7 +40,7 @@ export function CreateContentModal({ open, onClose }: CreateContentModalProps) {
         },
         {
           headers: {
-            // FIX: Ensure Bearer prefix is used to match your split(" ")[1] logic
+            
             Authorization: `Bearer ${token}` 
           }
         }
@@ -58,7 +58,7 @@ export function CreateContentModal({ open, onClose }: CreateContentModalProps) {
       onClose();
 
     } catch (err: any) {
-      // Improved error logging to see the exact backend failure
+      //error logging
       console.error("Submission Error:", err.response?.data || err.message);
       alert(err.response?.data?.message || "Error adding content");
     }

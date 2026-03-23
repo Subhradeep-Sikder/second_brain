@@ -5,6 +5,7 @@ import { CreateContentModal } from "../components/CreateContentModal";
 import { Card } from "../components/ui/Card";
 import { useContent } from "../hooks/useContent";
 import { useNavigate } from "react-router-dom";
+//import { BACKEND_URL } from "../config";
 
 // Icons
 import { DocumentIcon } from "../icons/DocumentIcon";
@@ -43,7 +44,7 @@ export function Dashboard() {
         onSelect={(type) => setActiveFilter(type)} 
       />
 
-      {/* ✅ FIX: Added responsive margin-left (ml-20 and lg:ml-72) */}
+      
       <div className="flex-1 p-8 overflow-y-auto ml-20 lg:ml-72 transition-all duration-300">
         <Topbar onAddClick={() => setIsModalOpen(true)} />
 

@@ -1,10 +1,8 @@
 interface SidebarItemProps {
   text: string;
   icon: React.ReactNode;
-  // ✅ ADDED: Function to call when clicked
-  onClick: () => void; 
-  // ✅ ADDED: To highlight the currently selected filter
-  active?: boolean;    
+   onClick: () => void; 
+   active?: boolean;    
 }
 
 export function SidebarItem({ text, icon, onClick, active }: SidebarItemProps) {
@@ -15,8 +13,8 @@ export function SidebarItem({ text, icon, onClick, active }: SidebarItemProps) {
         flex items-center p-3 rounded-lg cursor-pointer transition-all group 
         justify-center lg:justify-start mb-1
         ${active 
-          ? "bg-indigo-50 text-indigo-600" // Styles when this filter is ON
-          : "text-gray-600 hover:bg-gray-100 hover:text-gray-900" // Styles when OFF
+          ? "bg-indigo-50 text-indigo-600" 
+          : "text-gray-600 hover:bg-gray-100 hover:text-gray-900" 
         }
       `}
     >
@@ -36,7 +34,7 @@ export function SidebarItem({ text, icon, onClick, active }: SidebarItemProps) {
         {text}
       </span>
       
-      {/* ✅ OPTIONAL: Add a little indicator bar on the right for active state */}
+     
       {active && (
         <div className="absolute right-0 w-1 h-6 bg-indigo-600 rounded-l-full hidden lg:block" />
       )}

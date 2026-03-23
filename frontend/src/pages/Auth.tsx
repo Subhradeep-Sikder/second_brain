@@ -20,7 +20,7 @@ export function Auth() {
 
     try {
       if (isLogin) {
-        // 🔐 SIGN IN
+        //SIGN IN
         const response = await axios.post(`${BACKEND_URL}/signin`, {
           username,
           password,
@@ -28,22 +28,22 @@ export function Auth() {
 
         const token = response.data.token;
 
-        // ✅ Safety check
+        //Safety check
         if (!token) {
           throw new Error("Token not received from backend");
         }
 
-        // ✅ Save token
+        //save token
         localStorage.setItem("token", token);
 
         console.log("Saved Token:", token);
 
         alert("Logged in successfully!");
 
-        // ✅ Redirect only if token exists
+        // Redirect only if token exists
         navigate("/dashboard");
       } else {
-        // 🆕 SIGN UP
+        // SIGN UP
         await axios.post(`${BACKEND_URL}/signup`, {
           username,
           password,

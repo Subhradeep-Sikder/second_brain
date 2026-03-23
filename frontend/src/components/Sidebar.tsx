@@ -4,7 +4,7 @@ import { YoutubeIcon } from "../icons/YoutubeIcon";
 import { DocumentIcon } from "../icons/DocumentIcon";
 import { SidebarItem } from "./SidebarItem";
 
-// ✅ ADDED: Interface to handle props from Dashboard
+
 interface SidebarProps {
   onSelect: (type: string) => void;
   activeFilter: string;
@@ -23,7 +23,7 @@ export function Sidebar({ onSelect, activeFilter }: SidebarProps) {
       </div>
 
       <div className="flex-1 px-4 space-y-2">
-        {/* ✅ ADDED: All Notes filter (standard practice) */}
+        {/* All Notes filter*/}
         <SidebarItem 
           text="All Notes" 
           icon={<BrainIcon className="w-5 h-5" />} 

@@ -9,24 +9,24 @@ interface TopbarProps {
 
 export function Topbar({ onAddClick }: TopbarProps) {
   
-  // 🔗 Share Brain Logic
+  //Share Brain Logic
   const handleShareBrain = async () => {
     try {
       const token = localStorage.getItem("token");
       
-      // 1. Call your backend share route
+     
       const response = await api.post("/brain/share", 
         { share: true }, 
         { headers: { Authorization: `Bearer ${token}` } }
       );
 
-      // 2. Extract the hash from the response
+   
       const hash = response.data.hash;
       
-      // 3. Construct the frontend URL (Port 5173 is Vite default)
+    
       const shareUrl = `${window.location.origin}/share/${hash}`;
       
-      // 4. Copy to clipboard
+      //Copy to clipboard
       await navigator.clipboard.writeText(shareUrl);
       
       alert("🚀 Share link copied to clipboard!\n" + shareUrl);

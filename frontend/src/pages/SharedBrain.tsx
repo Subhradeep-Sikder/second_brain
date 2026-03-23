@@ -6,14 +6,15 @@ import { Card } from "../components/ui/Card";
 import { YoutubeIcon } from "../icons/YoutubeIcon";
 import { TwitterIcon } from "../icons/TwitterIcon";
 import { DocumentIcon } from "../icons/DocumentIcon";
+import { BACKEND_URL } from "../config";
 
 export function SharedBrain() {
-  // 1. This variable name MUST match the one in App.tsx (:shareId)
+ 
   const { shareId } = useParams<{ shareId: string }>(); 
   const [content, setContent] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
 
-  const BACKEND_URL = "http://localhost:3000/api/v1";
+
 
   const getIcon = (type: string) => {
     if (type === "youtube") return <YoutubeIcon className="w-5 h-5 text-red-500" />;
@@ -23,10 +24,10 @@ export function SharedBrain() {
 
   useEffect(() => {
     async function fetchSharedData() {
-      // 2. Log check
+     
       console.log("Current shareId from URL:", shareId);
       
-      // 3. Guard: If shareId is undefined, don't try to call the backend
+  
       if (!shareId || shareId === "undefined") {
         return; 
       }
@@ -41,13 +42,13 @@ export function SharedBrain() {
       } catch (error: any) {
         console.error("Fetch failed!", error.response?.data || error.message);
       } finally {
-        // This ensures the revolving spinner STOPS
+       
         setLoading(false);
       }
     }
 
     fetchSharedData();
-  }, [shareId]); // Runs whenever the URL ID changes
+  }, [shareId]); 
 
   if (loading) {
     return (
@@ -75,12 +76,12 @@ export function SharedBrain() {
                 key={item._id}
                 title={item.title}
                 icon={getIcon(item.type)}
-                // Maps tags if they are objects, otherwise defaults to empty array
+              
                 tags={item.tags?.map((t: any) => typeof t === 'object' ? t.title : t) || []}
                 date="Shared"
                 onDelete={() => {}}
               >
-                <div className="text-gray-600 break-words">{item.link}</div>
+                <div className="text-gray-600 wrap-break-words">{item.link}</div>
               </Card>
             ))}
           </div>

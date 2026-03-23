@@ -8,7 +8,7 @@ interface CardProps {
   tags: string[];
   date: string;
   children: ReactNode; 
-  onDelete: () => void; // Already in your interface!
+  onDelete: () => void; 
 }
 
 export function Card({ title, icon, tags, date, children, onDelete }: CardProps) {
@@ -25,7 +25,7 @@ export function Card({ title, icon, tags, date, children, onDelete }: CardProps)
             <ShareIcon className="w-5 h-5" />
           </button>
           
-          {/* ✅ FIX: Added onClick={onDelete} here */}
+         
           <button 
             onClick={onDelete} 
             className="hover:text-red-500 transition-colors cursor-pointer"
