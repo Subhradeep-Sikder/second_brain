@@ -9,7 +9,11 @@ This is the backend of the project built using **Node.js + Express + TypeScript*
 ### 1. Clone the Repository
 
 ```bash
+<<<<<<< HEAD
 git clone <repo>
+=======
+git clone <your-repo-url>
+>>>>>>> 48e9e65b8d1d7dbca4ac51854da0571bfafe3bc2
 cd backend
 ```
 
