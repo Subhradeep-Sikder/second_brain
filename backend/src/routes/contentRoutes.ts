@@ -8,22 +8,30 @@ const router = express.Router();
 router.post("/", authMiddleware, async (req, res) => {
   try {
     const { title, link, type, tags } = req.body;
+    const userId = (req as any).userId;
 
-    await Content.create({
+    // 1. Debug: Check if userId actually exists
+    if (!userId) {
+        console.error("Auth Error: userId is undefined. Check authMiddleware.");
+    }
+
+    const newContent = await Content.create({
       title,
       link,
       type,
-      tags,
-      userId: (req as any).userId
+      tags: tags || [], // Ensure this is an array
+      userId: userId
     });
 
-    res.json({
-      message: "Content added successfully"
-    });
+    res.json({ message: "Content added successfully" });
 
-  } catch (error) {
-    res.status(500).json({
-      message: "Error adding content"
+  } catch (error: any) {
+    // 2. THIS IS THE FIX: Print the real error to your VS Code terminal
+    console.error("MONGOOSE ERROR:", error.message);
+
+    res.status(500).json({ 
+      message: "Error adding content",
+      error: error.message // 3. This will now show up in your Chrome Console!
     });
   }
 });
@@ -62,11 +70,13 @@ router.delete("/", authMiddleware, async (req, res) => {
       message: "Content deleted successfully"
     });
 
-  } catch (error) {
+  } catch (error: any) {
+    console.error("BACKEND_ERROR:", error); 
     res.status(500).json({
-      message: "Error deleting content"
+      message: "Error adding content",
+      error: error.message 
     });
-  }
+}
 });
 
 export default router;
