@@ -19,7 +19,7 @@ app.use(cors());
 
 app.use("/api/v1", authRoutes);
 app.use("/api/v1/content", contentRoutes);
-app.use("/api/v1", shareRoutes);
+app.use("/api/v1/brain", shareRoutes);
 
 const PORT = process.env.PORT || 3000;
 

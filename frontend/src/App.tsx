@@ -18,6 +18,9 @@ export default function App() {
         
         {/* Catch-all: redirect unknown URLs back to Auth */}
         <Route path="*" element={<Navigate to="/" />} />
+
+        // Inside your Routes in App.tsx
+        <Route path="/share/:shareId" element={<SharedBrain />} />  
       </Routes>
     </BrowserRouter>
   );

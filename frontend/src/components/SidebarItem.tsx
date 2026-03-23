@@ -1,20 +1,45 @@
 interface SidebarItemProps {
   text: string;
   icon: React.ReactNode;
+  // ✅ ADDED: Function to call when clicked
+  onClick: () => void; 
+  // ✅ ADDED: To highlight the currently selected filter
+  active?: boolean;    
 }
 
-export function SidebarItem({ text, icon }: SidebarItemProps) {
+export function SidebarItem({ text, icon, onClick, active }: SidebarItemProps) {
   return (
-    <div className="flex items-center p-3 hover:bg-gray-100 rounded-lg cursor-pointer transition-colors group justify-center lg:justify-start">
-      {/* Icon always stays visible */}
-      <div className="text-gray-600 group-hover:text-indigo-600 transition-colors shrink-0">
+    <div 
+      onClick={onClick}
+      className={`
+        flex items-center p-3 rounded-lg cursor-pointer transition-all group 
+        justify-center lg:justify-start mb-1
+        ${active 
+          ? "bg-indigo-50 text-indigo-600" // Styles when this filter is ON
+          : "text-gray-600 hover:bg-gray-100 hover:text-gray-900" // Styles when OFF
+        }
+      `}
+    >
+      {/* Icon */}
+      <div className={`
+        transition-colors shrink-0
+        ${active ? "text-indigo-600" : "text-gray-500 group-hover:text-indigo-600"}
+      `}>
         {icon}
       </div>
 
-      {/* FIX: This hides the text on mobile/small screens and shows it on large screens */}
-      <span className="ml-4 text-gray-700 font-medium hidden lg:block whitespace-nowrap">
+      {/* Text - Hidden on small screens, visible on LG */}
+      <span className={`
+        ml-4 font-medium hidden lg:block whitespace-nowrap
+        ${active ? "text-indigo-700" : "text-gray-700"}
+      `}>
         {text}
       </span>
+      
+      {/* ✅ OPTIONAL: Add a little indicator bar on the right for active state */}
+      {active && (
+        <div className="absolute right-0 w-1 h-6 bg-indigo-600 rounded-l-full hidden lg:block" />
+      )}
     </div>
   );
 }
