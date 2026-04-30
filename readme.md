@@ -122,6 +122,33 @@ http://localhost:5173
 * 🏷️ Tag-based organization
 * 🔗 Store links (YouTube, Twitter, Docs, etc.)
 * 📱 Clean and responsive UI
+* 🌙 Dark mode support
+* 🔗 Share your brain with shareable links
+
+---
+
+## 📸 Screenshots
+
+### Authentication Page
+![Auth Page](screenshots/auth-page.png)
+
+### Dashboard - Light Mode
+![Dashboard Light Mode](screenshots/dashboard-light-mode.png)
+
+### Dashboard - Dark Mode
+![Dashboard Dark Mode](screenshots/dashboard-dark-mode.png)
+
+### Dashboard with Sample Content
+![Dashboard with Sample Content](screenshots/dashboard-with-sample-content.png)
+
+### Add New Content
+![Add New Content](screenshots/add-new-content-from.png)
+
+### Shared Brain Link
+![Shared Brain Link](screenshots/sharedbrain-link.png)
+
+### Public Shared Brain
+![Public Shared Brain](screenshots/public-shared-brain.png)
 
 ---
 
@@ -156,9 +183,9 @@ http://localhost:5173
 ## 📌 Future Improvements
 
 * 🎥 YouTube & Twitter embedding support
-* 🌙 Dark mode enable
 * ⚙️ Other UI/UX tweaks and performance improvements
-* 🚪 Logout functionality
+* 📊 Advanced analytics and insights
+* 🔔 Notifications and reminders
 
 
 ---
