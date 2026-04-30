@@ -9,18 +9,15 @@ export default function App() {
       <Routes>
         {/* Default route goes to Auth */}
         <Route path="/" element={<Auth />} />
-        
+
         {/* Protected Dashboard Route */}
         <Route path="/dashboard" element={<Dashboard />} />
-        
-        {/* Shared Brain Route (for later) */}
+
+        {/* Shared Brain Route */}
         <Route path="/share/:shareLink" element={<SharedBrain />} />
-        
+
         {/* Catch-all: redirect unknown URLs back to Auth */}
         <Route path="*" element={<Navigate to="/" />} />
-
-        // Inside your Routes in App.tsx
-        <Route path="/share/:shareId" element={<SharedBrain />} />  
       </Routes>
     </BrowserRouter>
   );

@@ -8,8 +8,8 @@ interface ButtonProps {
 }
 
 const variantStyles = {
-  primary: "bg-indigo-600 text-white hover:bg-indigo-700",
-  secondary: "bg-indigo-100 text-indigo-600 hover:bg-indigo-200",
+  primary: "bg-indigo-600 text-white hover:bg-indigo-700 dark:bg-indigo-600 dark:hover:bg-indigo-500",
+  secondary: "bg-indigo-100 text-indigo-600 hover:bg-indigo-200 dark:bg-indigo-900 dark:text-indigo-200 dark:hover:bg-indigo-800",
 };
 
 export function Button({ variant, text, startIcon, onClick }: ButtonProps) {

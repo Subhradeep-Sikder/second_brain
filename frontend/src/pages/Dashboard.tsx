@@ -38,19 +38,19 @@ export function Dashboard() {
   };
 
   return (
-    <div className="flex h-screen bg-gray-50">
-      <Sidebar 
-        activeFilter={activeFilter} 
-        onSelect={(type) => setActiveFilter(type)} 
+    <div className="flex h-screen bg-gray-50 dark:bg-gray-900">
+      <Sidebar
+        activeFilter={activeFilter}
+        onSelect={(type) => setActiveFilter(type)}
       />
 
-      
+
       <div className="flex-1 p-8 overflow-y-auto ml-20 lg:ml-72 transition-all duration-300">
         <Topbar onAddClick={() => setIsModalOpen(true)} />
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
           {!contents && (
-            <div className="text-gray-400">Loading...</div>
+            <div className="text-gray-400 dark:text-gray-500">Loading...</div>
           )}
 
           {filteredContents && filteredContents.map((item: any) => (
@@ -60,14 +60,15 @@ export function Dashboard() {
               icon={getIcon(item.type)}
               tags={item.tags || []}
               date="Today"
+              link={item.link}
               onDelete={() => deleteContent(item._id)}
             >
-              <p className="text-gray-600 break-all">{item.link}</p>
+              <p className="text-gray-600 dark:text-gray-400 break-all">{item.link}</p>
             </Card>
           ))}
 
           {filteredContents && filteredContents.length === 0 && (
-            <div className="col-span-full flex flex-col items-center justify-center py-20 text-gray-400">
+            <div className="col-span-full flex flex-col items-center justify-center py-20 text-gray-400 dark:text-gray-500">
               <p className="text-xl font-medium">No {activeFilter === 'all' ? '' : activeFilter} notes found.</p>
               <p className="text-sm mt-1">Try adding some content or changing your filter!</p>
             </div>
